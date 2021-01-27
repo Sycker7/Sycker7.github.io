@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611636106524">
+<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611737971158">
 <link rel="stylesheet" href="https://sycker7.github.io/styles/main.css">
 
 
@@ -28,7 +28,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sycker7.github.io">
-        <img src="https://sycker7.github.io/images/avatar.png?v=1611636106524" class="site-logo">
+        <img src="https://sycker7.github.io/images/avatar.png?v=1611737971158" class="site-logo">
         <h1 class="site-title">Sycker&#39;s blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -44,20 +44,14 @@
         
       
         
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
           <a href="/tags" class="site-nav">
             目录
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
-            关于
+          <a href="/archives" class="site-nav">
+            历史
           </a>
         
       
@@ -66,6 +60,10 @@
   <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
     <div class="social-container">
       
+        
+          <a class="social-link" href="https://github.com/Sycker7" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
         
       
         
@@ -81,7 +79,7 @@
       Nice to meet you.
     </div>
     <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://sycker7.github.io/atom.xml" target="_blank">RSS</a>
+       | <a class="rss" href="https://sycker7.github.io/atom.xml" target="_blank">RSS</a>
     </div>
   </div>
 </div>
@@ -89,39 +87,6 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://sycker7.github.io/post/sycker-day-01/">
-                  <h2 class="post-title">Sycker day 01</h2>
-                </a>
-                <div class="post-date">
-                  2021-01-26
-                </div>
-                <div class="post-abstract">
-                  <p>🙂</p>
-
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://sycker7.github.io/post/hello-gridea/">
-                  <h2 class="post-title">Hello Gridea</h2>
-                </a>
-                <div class="post-date">
-                  2018-12-12
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-                </div>
-              </div>
-              
-            </article>
           
 
           <div class="pagination-container">
@@ -147,6 +112,11 @@ var app = new Vue({
 
 </script>
 
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
 
 
 
