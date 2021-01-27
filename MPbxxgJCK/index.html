@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>（JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数 | Sycker&#39;s blog</title>
+<meta name="description" content="Nice to meet you.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611744509592">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://sycker7.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://sycker7.github.io">Sycker&#39;s blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                目录
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                历史
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>（JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数</h1>
+            <p class="article-meta">
+              2021-01-27
+              
+            </p>
+            
+            <div class="post-content">
+              <h2 id="1list的子类掌握">1:List的子类(掌握)</h2>
+<h3 id="1list的子类特点">(1)List的子类特点</h3>
+<p>​		ArrayList:<br>
+​			底层数据结构是数组，查询快，增删慢<br>
+​			线程不安全，效率高<br>
+​		Vector:<br>
+​			底层数据结构是数组，查询快，增删慢<br>
+​			线程安全，效率低<br>
+​		LinkedList:<br>
+​			底层数据结构是链表，查询慢，增删快<br>
+​			线程不安全，效率高</p>
+<h3 id="2arraylist">(2)ArrayList</h3>
+<h4 id="a没有特有功能需要学习">A:没有特有功能需要学习</h4>
+<h4 id="b案例">B:案例</h4>
+<p>​			a:ArrayList存储字符串并遍历<br>
+​			b:ArrayList存储自定义对象并遍历</p>
+<h3 id="3vector">(3)Vector</h3>
+<h4 id="a有特有功能">A:有特有功能</h4>
+<p>​			a:添加<br>
+​				public void addElement(E obj)		--	add()<br>
+​			b:获取<br>
+​				public E elementAt(int index)		--	get()<br>
+​				public Enumeration<E> elements()	--  iterator()</p>
+<h4 id="b案例-2">B:案例</h4>
+<p>​			a:Vector存储字符串并遍历<br>
+​			b:Vector存储自定义对象并遍历</p>
+<h3 id="4linkedlist">(4)LinkedList</h3>
+<h4 id="a有特有功能-2">A:有特有功能</h4>
+<p>​			a:添加<br>
+​				addFirst()<br>
+​				addLast()<br>
+​			b:删除<br>
+​				removeFirst()<br>
+​				removeLast()<br>
+​			c:获取<br>
+​				getFirst()<br>
+​				getLast()</p>
+<h4 id="b案例-3">B:案例</h4>
+<p>​			a:LinkedList存储字符串并遍历<br>
+​			b:LinkedList存储自定义对象并遍历</p>
+<h3 id="5案例">(5)案例：</h3>
+<h4 id="a去除集合中的多个字符串的重复元素">A:去除集合中的多个字符串的重复元素</h4>
+<p>​			如果字符串的内容相同，即为重复元素</p>
+<h4 id="b去除集合中的多个自定义对象的重复元素">B:去除集合中的多个自定义对象的重复元素</h4>
+<p>​			如果自定义对象的成员变量值都相同，即为重复元素</p>
+<h4 id="c用linkedlist模拟一个栈数据结构的集合类并测试">C:用LinkedList模拟一个栈数据结构的集合类，并测试。</h4>
+<p>​			你要定义一个集合类，只不过内部可以使用LinkedList来实现。</p>
+<h2 id="2泛型掌握">2:泛型(掌握)</h2>
+<h3 id="1泛型概述">(1)泛型概述</h3>
+<p>​		是一种把明确类型的工作推迟到创建对象或者调用方法的时候才去明确的特殊的类型。</p>
+<h3 id="2格式">(2)格式：</h3>
+<p>​		&lt;数据类型&gt;<br>
+​		注意：该数据类型只能是引用类型。</p>
+<h3 id="3好处">(3)好处：</h3>
+<p>​		A:把运行时期的问题提前到了编译期间</p>
+<p>​		B:避免了强制类型转换</p>
+<p>​		C:优化了程序设计，解决了黄色警告线问题，让程序更安全</p>
+<h3 id="4泛型的前世今生">(4)泛型的前世今生</h3>
+<h4 id="a泛型的由来">A:泛型的由来</h4>
+<p>​			Object类型作为任意类型的时候，在向下转型的时候，会隐含一个转型问题</p>
+<h4 id="b泛型类">B:泛型类</h4>
+<h4 id="c泛型方法">C:泛型方法</h4>
+<h4 id="d泛型接口">D:泛型接口</h4>
+<h4 id="e泛型高级通配符">E:泛型高级通配符</h4>
+<p>​			?<br>
+​			? extends E<br>
+​			? super E</p>
+<h3 id="5我们在哪里使用呢">(5)我们在哪里使用呢?</h3>
+<p>​		一般是在集合中使用。<br>
+​</p>
+<h2 id="3增强for循环掌握">3:增强for循环(掌握)</h2>
+<h3 id="1格式">(1)格式</h3>
+<p>​		for(元素的数据类型 变量名 : 数组或者Collection集合的对象) {<br>
+​			使用该变量即可，该变量其实就是数组或者集合中的元素。<br>
+​		}</p>
+<h3 id="2好处">(2)好处</h3>
+<p>​		简化了数组和集合的遍历</p>
+<h3 id="3弊端">(3)弊端</h3>
+<p>​		增强for循环的目标不能为null。建议在使用前，先判断是否为null。</p>
+<h2 id="4静态导入了解">4:静态导入(了解)</h2>
+<h3 id="1可以导入到方法级别的导入">(1)可以导入到方法级别的导入</h3>
+<h3 id="2格式-2">(2)格式：</h3>
+<p>​		import static 包名....类名.方法名;</p>
+<h3 id="3注意事项">(3)注意事项：</h3>
+<p>​		A:方法必须是静态的</p>
+<p>​		B:如果多个类下有同名的方法，就不好区分了，还得加上前缀。</p>
+<p>​			所以一般我们并不使用静态导入，但是一定要能够看懂。<br>
+​</p>
+<h2 id="5可变参数掌握">5:可变参数(掌握)</h2>
+<h3 id="1如果我们在写方法的时候参数个数不明确就应该定义可变参数">(1)如果我们在写方法的时候，参数个数不明确，就应该定义可变参数。</h3>
+<h3 id="2格式-3">(2)格式：</h3>
+<p>​		修饰符 返回值类型 方法名(数据类型... 变量) {}</p>
+<p>​		注意：<br>
+​			A:该变量其实是一个数组名<br>
+​			B:如果一个方法有多个参数，并且有可变参数，可变参数必须在最后</p>
+<h3 id="3arrays工具类的一个方法">(3)Arrays工具类的一个方法</h3>
+<p>​	asList()把数组转成集合。<br>
+​	注意：这个集合的长度不能改变。</p>
+<h2 id="6练习掌握">6:练习(掌握)</h2>
+<h3 id="a集合的嵌套遍历">A:集合的嵌套遍历</h3>
+<h3 id="b产生10个1-20之间的随机数要求随机数不能重复">B:产生10个1-20之间的随机数，要求随机数不能重复</h3>
+<h3 id="c键盘录入多个数据以0结束并在控制台输出最大值">C:键盘录入多个数据，以0结束，并在控制台输出最大值</h3>
+<p>​</p>
+<h2 id="7要掌握的代码">7:要掌握的代码</h2>
+<p>​	集合存储元素，加入泛型，并可以使用增强for遍历。</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://sycker7.github.io/images/avatar.png?v=1611744509592" class="no-responsive avatar">
+    <div class="text-muted">Nice to meet you.</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://sycker7.github.io/MPbxxgJCK/">（JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+    </div>
+  </div>
+  <div class="paper">
+     | <a class="rss" href="https://sycker7.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
