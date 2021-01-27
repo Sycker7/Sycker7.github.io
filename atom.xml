@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sycker7.github.io</id>
     <title>Sycker&apos;s blog</title>
-    <updated>2021-01-27T09:48:55.285Z</updated>
+    <updated>2021-01-27T10:20:47.053Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sycker7.github.io"/>
     <link rel="self" href="https://sycker7.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2021, Sycker&apos;s blog</rights>
     <entry>
         <title type="html"><![CDATA[（JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数]]></title>
-        <id>https://sycker7.github.io/post/javase-bi-ji-list-de-zi-lei-fan-xing-zeng-qiang-for-xun-huan-jing-tai-dao-ru-ke-bian-can-shu/</id>
-        <link href="https://sycker7.github.io/post/javase-bi-ji-list-de-zi-lei-fan-xing-zeng-qiang-for-xun-huan-jing-tai-dao-ru-ke-bian-can-shu/">
+        <id>https://sycker7.github.io/javase-bi-ji-list-de-zi-lei-fan-xing-zeng-qiang-for-xun-huan-jing-tai-dao-ru-ke-bian-can-shu/</id>
+        <link href="https://sycker7.github.io/javase-bi-ji-list-de-zi-lei-fan-xing-zeng-qiang-for-xun-huan-jing-tai-dao-ru-ke-bian-can-shu/">
         </link>
         <updated>2021-01-27T09:02:24.000Z</updated>
     </entry>
