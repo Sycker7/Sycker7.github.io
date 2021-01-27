@@ -1,22 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://sycker7.github.io</id>
-    <title>Sycker&apos;s blog</title>
-    <updated>2021-01-27T09:36:17.467Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://sycker7.github.io"/>
-    <link rel="self" href="https://sycker7.github.io/atom.xml"/>
-    <subtitle>Nice to meet you.</subtitle>
-    <logo>https://sycker7.github.io/images/avatar.png</logo>
-    <icon>https://sycker7.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Sycker&apos;s blog</rights>
-    <entry>
-        <title type="html"><![CDATA[（JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数]]></title>
-        <id>https://sycker7.github.io/post/javase-bi-ji-list-de-zi-lei-fan-xing-zeng-qiang-for-xun-huan-jing-tai-dao-ru-ke-bian-can-shu/</id>
-        <link href="https://sycker7.github.io/post/javase-bi-ji-list-de-zi-lei-fan-xing-zeng-qiang-for-xun-huan-jing-tai-dao-ru-ke-bian-can-shu/">
-        </link>
-        <updated>2021-01-27T09:02:24.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1list的子类掌握">1:List的子类(掌握)</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>（JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数 | Sycker&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611740174278">
+<link rel="stylesheet" href="https://sycker7.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1:List的子类(掌握)
+###(1)List的子类特点
+	ArrayList:
+		底层数据结构是数组，查询快，增删慢
+		线程不安全，效率高
+	Vector:
+		底层数据结构是数组，查询快，增删慢
+		线程安全，效率低
+	Linke..." />
+    <meta name="keywords" content="JavaSE" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://sycker7.github.io">
+        <img src="https://sycker7.github.io/images/avatar.png?v=1611740174278" class="site-logo">
+        <h1 class="site-title">Sycker&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            目录
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            历史
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Sycker7" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Nice to meet you.
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://sycker7.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">（JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数</h2>
+            <div class="post-date">2021-01-27</div>
+            
+              <div class="feature-container" style="background-image: url('https://sycker7.github.io/post-images/javase-bi-ji-list-de-zi-lei-fan-xing-zeng-qiang-for-xun-huan-jing-tai-dao-ru-ke-bian-can-shu.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1list的子类掌握">1:List的子类(掌握)</h2>
 <pre><code>###(1)List的子类特点
 	ArrayList:
 		底层数据结构是数组，查询快，增删慢
@@ -152,6 +239,50 @@ ArrayList array = new ArrayList();</p>
 	
 ## 7:要掌握的代码
 	集合存储元素，加入泛型，并可以使用增强for遍历。</code></pre>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://sycker7.github.io/tag/GBXkEio9u/" class="tag">
+                    JavaSE
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
