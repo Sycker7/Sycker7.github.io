@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611744765118">
+<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611810978851">
 <link rel="stylesheet" href="https://sycker7.github.io/styles/main.css">
 
 
@@ -26,7 +26,7 @@
 ​		Vector:
 ​			底层数据结构是数组，查询快，增删慢
 ​			线程安全，效..." />
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="JavaSE" />
   </head>
   <body>
     <div id="app" class="main">
@@ -35,7 +35,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sycker7.github.io">
-        <img src="https://sycker7.github.io/images/avatar.png?v=1611744765118" class="site-logo">
+        <img src="https://sycker7.github.io/images/avatar.png?v=1611810978851" class="site-logo">
         <h1 class="site-title">Sycker&#39;s blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -98,6 +98,9 @@
             <h2 class="post-title">（JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数</h2>
             <div class="post-date">2021-01-27</div>
             
+              <div class="feature-container" style="background-image: url('https://sycker7.github.io/post-images/MPbxxgJCK.jpg')">
+              </div>
+            
             <div class="post-content" v-pre>
               <h2 id="1list的子类掌握">1:List的子类(掌握)</h2>
 <h3 id="1list的子类特点">(1)List的子类特点</h3>
@@ -113,23 +116,135 @@
 <h3 id="2arraylist">(2)ArrayList</h3>
 <h4 id="a没有特有功能需要学习">A:没有特有功能需要学习</h4>
 <h4 id="b案例">B:案例</h4>
-<p>​			a:ArrayList存储字符串并遍历<br>
-​			b:ArrayList存储自定义对象并遍历</p>
+<p>​				a:ArrayList存储字符串并遍历</p>
+<pre><code class="language-java">package ArrayList_Study;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ArrayList_01 {
+	public static void main(String[] args) {
+		ArrayList array = new ArrayList();
+		
+		array.add(&quot;JOJO&quot;);
+		array.add(&quot;JJ&quot;);
+		array.add(&quot;AK47&quot;);
+		
+		Iterator it = array.iterator();
+		
+		while(it.hasNext()) {
+			String s = (String)it.next();
+			System.out.println(s);
+		}
+		System.out.println(&quot;----------&quot;);
+		
+		for(int i = 0; i &lt; array.size(); i++) {
+			String s = (String)array.get(i);
+			System.out.println(s);
+		}
+	}
+}
+</code></pre>
+<p>​</p>
+<p>​				b:ArrayList存储自定义对象并遍历</p>
+<pre><code class="language-java">package ArrayList_Study;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ArrayList_02 {
+	public static void main(String[] args) {
+		ArrayList array = new ArrayList();
+		
+		Student s1 = new Student(&quot;JOJO&quot;,17);
+		Student s2 = new Student(&quot;JJ&quot;,17);
+		Student s3 = new Student(&quot;DIO&quot;,17);
+		
+		array.add(s1);
+		array.add(s2);
+		array.add(s3);
+		
+		Iterator it = array.iterator();
+		
+		while(it.hasNext()) {
+			Student s = (Student)it.next();
+			System.out.println(s.getAge() + &quot;-----&quot; + s.getName());
+		}
+		
+		System.out.println(&quot;----------&quot;);
+		
+		for(int i = 0; i &lt; array.size(); i++) {
+			Student s = (Student)array.get(i);
+			System.out.println(s.getAge() + &quot;-----&quot; + s.getName());
+		}
+	}
+}
+
+</code></pre>
 <h3 id="3vector">(3)Vector</h3>
-<h4 id="a有特有功能">A:有特有功能</h4>
+<h4 id="a有特有功能但是基本不用还是用iterator">A:有特有功能(但是基本不用,还是用Iterator)</h4>
 <p>​			a:添加<br>
 ​				public void addElement(E obj)		--	add()<br>
 ​			b:获取<br>
 ​				public E elementAt(int index)		--	get()<br>
 ​				public Enumeration<E> elements()	--  iterator()</p>
 <h4 id="b案例-2">B:案例</h4>
-<p>​			a:Vector存储字符串并遍历<br>
-​			b:Vector存储自定义对象并遍历</p>
+<p>​			a:Vector存储字符串并遍历</p>
+<pre><code class="language-java">package Vector_Study;
+
+import java.util.Enumeration;
+import java.util.Vector;
+/*
+ * Vector的特有功能：
+ * 1：添加功能
+ * 		public void addElement(Object obj)		--	add()
+ * 2：获取功能
+ * 		public Object elementAt(int index)		--  get()
+ * 		public Enumeration elements()			--	Iterator iterator()
+ * 				boolean hasMoreElements()				hasNext()
+ * 				Object nextElement()					next()
+ * 
+ * JDK升级的原因：
+ * 		A:安全
+ * 		B:效率
+ * 		C:简化书写
+ * 
+ * 最后还是用迭代器 不用特有的 Enumeration en = v.elements();
+ */
+public class Vector_01 {
+	public static void main(String[] args) {
+		// 创建集合对象
+				Vector v = new Vector();
+
+				// 添加功能
+				v.addElement(&quot;hello&quot;);
+				v.addElement(&quot;world&quot;);
+				v.addElement(&quot;java&quot;);
+
+				// 遍历
+				for (int x = 0; x &lt; v.size(); x++) {
+					String s = (String) v.elementAt(x);
+					System.out.println(s);
+				}
+
+				System.out.println(&quot;------------------&quot;);
+
+				Enumeration en = v.elements(); // 返回的是实现类的对象
+				while (en.hasMoreElements()) {
+					String s = (String) en.nextElement();
+					System.out.println(s);
+				}
+			}
+}
+
+
+</code></pre>
+<p>​			b:Vector存储自定义对象并遍历</p>
 <h3 id="4linkedlist">(4)LinkedList</h3>
-<h4 id="a有特有功能-2">A:有特有功能</h4>
+<h4 id="a有特有功能">A:有特有功能</h4>
 <p>​			a:添加<br>
-​				addFirst()<br>
-​				addLast()<br>
+​				addFirst()		在开头加<br>
+​				addLast()		意义不大 和add一样<br>
 ​			b:删除<br>
 ​				removeFirst()<br>
 ​				removeLast()<br>
@@ -140,12 +255,298 @@
 <p>​			a:LinkedList存储字符串并遍历<br>
 ​			b:LinkedList存储自定义对象并遍历</p>
 <h3 id="5案例">(5)案例：</h3>
-<h4 id="a去除集合中的多个字符串的重复元素">A:去除集合中的多个字符串的重复元素</h4>
+<h4 id="a去除集合中的多个字符串的重复元素两个思路">A:去除集合中的多个字符串的重复元素(两个思路)</h4>
 <p>​			如果字符串的内容相同，即为重复元素</p>
+<pre><code class="language-java">package ArrayList_Study;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+/*
+ * ArrayList去除集合中字符串的重复值(字符串的内容相同)
+ * 
+ * 分析：
+ * 		A:创建集合对象
+ * 		B:添加多个字符串元素(包含内容相同的)
+ * 		C:创建新集合
+ * 		D:遍历旧集合,获取得到每一个元素
+ * 		E:拿这个元素到新集合去找，看有没有
+ * 			有：不搭理它
+ * 			没有：就添加到新集合
+ * 		F:遍历新集合
+ */
+public class ArrayList_03 {
+	public static void main(String[] args) {
+		// 创建集合对象
+				ArrayList array = new ArrayList();
+
+				// 添加多个字符串元素(包含内容相同的)
+				array.add(&quot;hello&quot;);
+				array.add(&quot;world&quot;);
+				array.add(&quot;java&quot;);
+				array.add(&quot;world&quot;);
+				array.add(&quot;java&quot;);
+				array.add(&quot;world&quot;);
+				array.add(&quot;world&quot;);
+				array.add(&quot;world&quot;);
+				array.add(&quot;world&quot;);
+				array.add(&quot;java&quot;);
+				array.add(&quot;world&quot;);
+
+				// 创建新集合
+				ArrayList newArray = new ArrayList();
+				// 遍历旧集合,获取得到每一个元素
+				Iterator it = array.iterator();
+				while (it.hasNext()) {
+					String s = (String) it.next();
+
+					// 拿这个元素到新集合去找，看有没有
+					if (!newArray.contains(s)) { //遗忘点 contains
+						newArray.add(s);
+					}
+				}
+				// 遍历新集合
+				for (int x = 0; x &lt; newArray.size(); x++) {
+					String s = (String) newArray.get(x);
+					System.out.println(s);
+				}
+	}
+}
+
+</code></pre>
+<pre><code class="language-java">package ArrayList_Study;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/*
+ * 去除集合中的重复值（字符串内容相同）
+ * 需求：ArrayList去除集合中字符串的重复值(字符串的内容相同)
+ * 要求：不能创建新的集合，就在以前的集合上做。
+ */
+public class ArrayList_04 {
+	public static void main(String[] args) {
+		// 创建集合对象
+		ArrayList array = new ArrayList();
+
+		// 添加多个字符串元素(包含内容相同的)
+		array.add(&quot;hello&quot;);
+		array.add(&quot;world&quot;);
+		array.add(&quot;java&quot;);
+		array.add(&quot;world&quot;);
+		array.add(&quot;java&quot;);
+		array.add(&quot;world&quot;);
+		array.add(&quot;world&quot;);
+		array.add(&quot;world&quot;);
+		array.add(&quot;world&quot;);
+		array.add(&quot;java&quot;);
+		array.add(&quot;world&quot;);
+
+		// 由选择排序思想引入，我们就可以通过这种思想做这个题目
+		// 拿0索引的依次和后面的比较，有就把后的干掉
+		// 同理，拿1索引...
+		for (int x = 0; x &lt; array.size() - 1; x++) {
+			for (int y = x + 1; y &lt; array.size(); y++) {
+				if (array.get(x).equals(array.get(y))) {
+					array.remove(y);
+					y--;//注意这点，没有y--则会出现错误，每次删除了空的那个位置就会被后面的补上，但是循环体还是会往后推一位
+						//所以删除后补空的那个元素就成了漏网之鱼，因此一旦删除要再回去到删除元素的那个位置进行判断
+				}
+			}
+		}
+
+		// 遍历集合
+		Iterator it = array.iterator();
+		while (it.hasNext()) {
+			String s = (String) it.next();
+			System.out.println(s);
+		}
+	}
+}
+
+</code></pre>
 <h4 id="b去除集合中的多个自定义对象的重复元素">B:去除集合中的多个自定义对象的重复元素</h4>
 <p>​			如果自定义对象的成员变量值都相同，即为重复元素</p>
+<pre><code class="language-java">package ArrayList_Study;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/*
+ * 需求：去除集合中自定义对象的重复值(对象的成员变量值都相同)
+ * 
+ * 我们按照和字符串一样的操作，发现出问题了。
+ * 为什么呢?
+ * 		我们必须思考哪里会出问题?
+ * 		通过简单的分析，我们知道问题出现在了判断上。
+ * 		而这个判断功能是集合自己提供的，所以我们如果想很清楚的知道它是如何判断的，就应该去看源码。
+ * contains()方法的底层依赖的是equals()方法。
+ * 而我们的学生类中没有equals()方法，这个时候，默认使用的是它父亲Object的equals()方法
+ * Object()的equals()默认比较的是地址值，所以，它们进去了。因为new的东西，地址值都不同。
+ * 按照我们自己的需求，比较成员变量的值，重写equals()即可。
+ * 自动生成即可。 ALT + SHIFT + S
+ */
+public class ArrayList_05 {
+	public static void main(String[] args) {
+		// 创建集合对象
+				ArrayList array = new ArrayList();
+
+				// 创建学生对象
+				Student s1 = new Student(&quot;林青霞&quot;, 27);
+				Student s2 = new Student(&quot;林志玲&quot;, 40);
+				Student s3 = new Student(&quot;凤姐&quot;, 35);
+				Student s4 = new Student(&quot;芙蓉姐姐&quot;, 18);
+				Student s5 = new Student(&quot;翠花&quot;, 16);
+				Student s6 = new Student(&quot;林青霞&quot;, 27);
+				Student s7 = new Student(&quot;林青霞&quot;, 18);
+
+				// 添加元素
+				array.add(s1);
+				array.add(s2);
+				array.add(s3);
+				array.add(s4);
+				array.add(s5);
+				array.add(s6);
+				array.add(s7);
+
+				// 创建新集合
+				ArrayList newArray = new ArrayList();
+
+				// 遍历旧集合,获取得到每一个元素
+				Iterator it = array.iterator();
+				while (it.hasNext()) {
+					Student s = (Student) it.next();
+
+					// 拿这个元素到新集合去找，看有没有
+					if (!newArray.contains(s)) {
+						newArray.add(s);
+					}
+				}
+
+				// 遍历新集合
+				for (int x = 0; x &lt; newArray.size(); x++) {
+					Student s = (Student) newArray.get(x);
+					System.out.println(s.getName() + &quot;---&quot; + s.getAge());
+				}
+	}
+}
+
+</code></pre>
+<pre><code class="language-java">package ArrayList_Study;
+
+public class Student {
+	private String name;
+	private int age;
+	
+	public Student(){}
+	public Student(String name,int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+	
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	
+	@Override   //重写equals
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (age != other.age)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	public String toString() {
+		return &quot;Student [name:&quot; + name + &quot;,age:&quot; + age +&quot;]&quot;;
+	}
+
+	
+}
+
+</code></pre>
 <h4 id="c用linkedlist模拟一个栈数据结构的集合类并测试">C:用LinkedList模拟一个栈数据结构的集合类，并测试。</h4>
 <p>​			你要定义一个集合类，只不过内部可以使用LinkedList来实现。</p>
+<pre><code class="language-java">package LinkedList_Study;
+
+/*
+ *请用LinkedList模拟栈数据结构的集合，并测试
+ *题目的意思是：
+ *		你自己的定义一个集合类，在这个集合类内部可以使用LinkedList模拟。
+ */
+
+public class LinkedList_03 {
+	public static void main(String[] args) {
+		// 创建集合对象
+		MyStack ms = new MyStack();
+
+		// 添加元素
+		ms.add(&quot;hello&quot;);
+		ms.add(&quot;world&quot;);
+		ms.add(&quot;java&quot;);
+		
+		while(!ms.isEmpty()){
+			System.out.println(ms.get());
+		}
+	}
+}
+
+</code></pre>
+<pre><code class="language-java">package LinkedList_Study;
+
+import java.util.LinkedList;
+
+/**
+ * 自定义的栈集合
+ * 
+ * @author 风清扬
+ * @version V1.0
+ */
+
+public class MyStack {
+	private LinkedList link;
+
+	public MyStack() {
+		link = new LinkedList();
+	}
+
+	public void add(Object obj) {
+		link.addFirst(obj);
+	}
+
+	public Object get() {
+		// return link.getFirst();
+		return link.removeFirst(); //返回删除的那个， 模拟栈中 弹出的过程
+	}
+
+	public boolean isEmpty() {
+		return link.isEmpty();
+	}
+}
+
+</code></pre>
 <h2 id="2泛型掌握">2:泛型(掌握)</h2>
 <h3 id="1泛型概述">(1)泛型概述</h3>
 <p>​		是一种把明确类型的工作推迟到创建对象或者调用方法的时候才去明确的特殊的类型。</p>
@@ -159,13 +560,213 @@
 <h3 id="4泛型的前世今生">(4)泛型的前世今生</h3>
 <h4 id="a泛型的由来">A:泛型的由来</h4>
 <p>​			Object类型作为任意类型的时候，在向下转型的时候，会隐含一个转型问题</p>
+<pre><code class="language-java">package Generic_Study;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+/*
+ * 泛型一般来说在创建集合对象的时候使用。
+ * 
+ * 有 泛型类  泛型方法  泛型接口
+ * 
+ * 下面用泛型的方式 优化之前写过的ArrayList集合存储字符串
+ */
+public class Generic_02 {
+	public static void main(String[] args) {
+		ArrayList&lt;String&gt; array = new ArrayList&lt;String&gt;();
+		
+		array.add(&quot;JOJO&quot;);
+		array.add(&quot;JJ&quot;);
+		array.add(&quot;Java&quot;);
+		
+		Iterator&lt;String&gt; it = array.iterator();
+		
+		while(it.hasNext()) {
+			String s = it.next();
+			System.out.println(s);
+		}
+		
+		System.out.println(&quot;--------------&quot;);
+		
+		for(int i = 0; i &lt; array.size(); i++) {
+			String s = array.get(i);
+			System.out.println(s);
+		}
+	}
+}
+
+</code></pre>
 <h4 id="b泛型类">B:泛型类</h4>
 <h4 id="c泛型方法">C:泛型方法</h4>
+<pre><code class="language-java">package Generic_Study;
+/*
+ * 泛型类的测试
+ */
+public class ObjectToolDemo {
+	public static void main(String[] args) {
+		// ObjectTool ot = new ObjectTool();
+		// ot.show(&quot;hello&quot;);
+		// ot.show(100);
+		// ot.show(true);
+
+		// ObjectTool&lt;String&gt; ot = new ObjectTool&lt;String&gt;();
+		// ot.show(&quot;hello&quot;);
+		//
+		// ObjectTool&lt;Integer&gt; ot2 = new ObjectTool&lt;Integer&gt;();
+		// ot2.show(100);
+		//
+		// ObjectTool&lt;Boolean&gt; ot3 = new ObjectTool&lt;Boolean&gt;();
+		// ot3.show(true);
+
+		// 如果还听得懂，那就说明泛型类是没有问题的
+		// 但是呢，谁说了我的方法一定要和类的类型的一致呢?
+		// 我要是类上没有泛型的话，方法还能不能接收任意类型的参数了呢?
+
+		// 定义泛型方法后
+		ObjectTool ot = new ObjectTool();
+		ot.show(&quot;hello&quot;);
+		ot.show(100);
+		ot.show(true);
+	}
+}
+
+</code></pre>
+<pre><code class="language-java">package Generic_Study;
+/*
+ * 泛型类：把泛型定义在类上
+ */
+//public class ObjectTool&lt;T&gt; {
+//// public void show(String s) {
+//// System.out.println(s);
+//// }
+////
+//// public void show(Integer i) {
+//// System.out.println(i);
+//// }
+////
+//// public void show(Boolean b) {
+//// System.out.println(b);
+//// }
+//
+//public void show(T t) {
+//	System.out.println(t);
+//}
+//}
+
+/*
+* 泛型方法：把泛型定义在方法上
+* 方法可以接收任意类型 
+*/
+public class ObjectTool {
+	public &lt;T&gt; void show(T t) { 
+		System.out.println(t);
+	}
+}
+
+</code></pre>
 <h4 id="d泛型接口">D:泛型接口</h4>
+<pre><code class="language-java">package Generic_Study;
+/*
+ * 泛型接口：把泛型定义在接口上
+ */
+public interface Inter&lt;T&gt; {
+	public abstract void show(T t);
+}
+
+</code></pre>
+<pre><code class="language-java">package Generic_Study;
+
+//实现类在实现接口的时候
+//第一种情况：已经知道该是什么类型的了
+//public class InterImpl implements Inter&lt;String&gt; {
+//	@Override
+//	public void show(String t) {
+//		System.out.println(t);
+//	}
+//}
+
+//第二种情况：还不知道是什么类型的(比第一种用的多)
+public class InterImpl&lt;T&gt; implements Inter&lt;T&gt; {
+	@Override
+	public void show(T t) {
+		System.out.println(t);
+	}
+}
+
+</code></pre>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&lt;</mo><mi>E</mi><mi>m</mi><mi>p</mi><mi>t</mi><mi>y</mi><mtext> </mtext><mi>M</mi><mi>a</mi><mi>t</mi><mi>h</mi><mtext> </mtext><mi>B</mi><mi>l</mi><mi>o</mi><mi>c</mi><mi>k</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&lt;Empty \space Math \space Block&gt;
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">m</span><span class="mord mathdefault">p</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace"> </span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">a</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mspace"> </span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault">c</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span></span></p>
+<pre><code class="language-java">package Generic_Study;
+
+public class InterDemo {
+	public static void main(String[] args) {
+		// 第一种情况的测试
+		// Inter&lt;String&gt; i = new InterImpl();
+		// i.show(&quot;hello&quot;);
+
+		// // 第二种情况的测试
+		Inter&lt;String&gt; i = new InterImpl&lt;String&gt;();
+		i.show(&quot;hello&quot;);
+
+		Inter&lt;Integer&gt; ii = new InterImpl&lt;Integer&gt;();
+		ii.show(100);
+	}
+}
+
+</code></pre>
 <h4 id="e泛型高级通配符">E:泛型高级通配符</h4>
 <p>​			?<br>
 ​			? extends E<br>
 ​			? super E</p>
+<pre><code class="language-java">package Generic_Study;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/*
+ * 泛型高级(通配符)
+ * ?:任意类型，如果没有明确，那么就是Object以及任意的Java类了
+ * ? extends E:向下限定，E及其子类
+ * ? super E:向上限定，E及其父类
+ */
+public class GenericDemo {
+	public static void main(String[] args) {
+		// 泛型如果明确的写的时候，前后必须一致
+		Collection&lt;Object&gt; c1 = new ArrayList&lt;Object&gt;();
+		// Collection&lt;Object&gt; c2 = new ArrayList&lt;Animal&gt;();
+		// Collection&lt;Object&gt; c3 = new ArrayList&lt;Dog&gt;();
+		// Collection&lt;Object&gt; c4 = new ArrayList&lt;Cat&gt;();
+
+		// ?表示任意的类型都是可以的
+		Collection&lt;?&gt; c5 = new ArrayList&lt;Object&gt;();
+		Collection&lt;?&gt; c6 = new ArrayList&lt;Animal&gt;();
+		Collection&lt;?&gt; c7 = new ArrayList&lt;Dog&gt;();
+		Collection&lt;?&gt; c8 = new ArrayList&lt;Cat&gt;();
+
+		// ? extends E:向下限定，E及其子类
+		// Collection&lt;? extends Animal&gt; c9 = new ArrayList&lt;Object&gt;();
+		Collection&lt;? extends Animal&gt; c10 = new ArrayList&lt;Animal&gt;();
+		Collection&lt;? extends Animal&gt; c11 = new ArrayList&lt;Dog&gt;();
+		Collection&lt;? extends Animal&gt; c12 = new ArrayList&lt;Cat&gt;();
+
+		// ? super E:向上限定，E及其父类
+		Collection&lt;? super Animal&gt; c13 = new ArrayList&lt;Object&gt;();
+		Collection&lt;? super Animal&gt; c14 = new ArrayList&lt;Animal&gt;();
+		// Collection&lt;? super Animal&gt; c15 = new ArrayList&lt;Dog&gt;();
+		// Collection&lt;? super Animal&gt; c16 = new ArrayList&lt;Cat&gt;();
+	}
+}
+
+class Animal {
+}
+
+class Dog extends Animal {
+}
+
+class Cat extends Animal {
+}
+
+</code></pre>
 <h3 id="5我们在哪里使用呢">(5)我们在哪里使用呢?</h3>
 <p>​		一般是在集合中使用。<br>
 ​</p>
@@ -178,10 +779,94 @@
 <p>​		简化了数组和集合的遍历</p>
 <h3 id="3弊端">(3)弊端</h3>
 <p>​		增强for循环的目标不能为null。建议在使用前，先判断是否为null。</p>
+<h3 id="4示例">(4)示例</h3>
+<pre><code class="language-java">package For_Study;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+/*
+ * 集合的三种遍历方式
+ * 要注意 ：增强for和迭代器是一样的     普通for和这两者有所不同(而且是ArrayList特有的)
+ */
+public class For_02 {
+	public static void main(String[] args) {
+		ArrayList&lt;String&gt; array = new ArrayList&lt;String&gt;();
+		
+		array.add(&quot;JOJO&quot;);
+		array.add(&quot;hello&quot;);
+		array.add(&quot;Sycker7&quot;);
+		
+		//迭代器
+		Iterator&lt;String&gt; it = array.iterator();
+		while(it.hasNext()) {
+			String s = (String) it.next();
+			System.out.println(s);
+		}
+		System.out.println(&quot;-------------&quot;);
+		
+		//普通for循环
+		for(int i = 0 ;i &lt; array.size(); i++) {
+			String s = (String)array.get(i);
+			System.out.println(s);
+		}
+		System.out.println(&quot;-------------&quot;);
+		
+		//增强for
+		for(String s : array) {
+			System.out.println(s);
+		}
+		System.out.println(&quot;-------------&quot;);
+		
+	}
+}
+
+</code></pre>
 <h2 id="4静态导入了解">4:静态导入(了解)</h2>
 <h3 id="1可以导入到方法级别的导入">(1)可以导入到方法级别的导入</h3>
 <h3 id="2格式-2">(2)格式：</h3>
 <p>​		import static 包名....类名.方法名;</p>
+<pre><code class="language-java">package StaticImport_Study;
+
+/*
+ * 静态导入：
+ * 格式：import static 包名….类名.方法名;
+ * 可以直接导入到方法的级别
+ * 
+ * 静态导入的注意事项：
+ * 	A:方法必须是静态的
+ * 	B:如果有多个同名的静态方法，容易不知道使用谁?这个时候要使用，必须加前缀。由此可见，意义不大，所以一般不用，但是要能看懂。
+ */
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.max;
+
+//错误
+//import static java.util.ArrayList.add;
+
+public class StaticImportDemo {
+	public static void main(String[] args) {
+		// System.out.println(java.lang.Math.abs(-100));
+		// System.out.println(java.lang.Math.pow(2, 3));
+		// System.out.println(java.lang.Math.max(20, 30));
+		// 太复杂，我们就引入到import
+
+		// System.out.println(Math.abs(-100));
+		// System.out.println(Math.pow(2, 3));
+		// System.out.println(Math.max(20, 30));
+		// 太复杂，有更简单
+
+//		System.out.println(abs(-100));
+		System.out.println(java.lang.Math.abs(-100));
+		System.out.println(pow(2, 3));
+		System.out.println(max(20, 30));
+	}
+	
+	public static void abs(String s){
+		System.out.println(s);
+	}
+}
+
+</code></pre>
 <h3 id="3注意事项">(3)注意事项：</h3>
 <p>​		A:方法必须是静态的</p>
 <p>​		B:如果多个类下有同名的方法，就不好区分了，还得加上前缀。</p>
@@ -194,18 +879,269 @@
 <p>​		注意：<br>
 ​			A:该变量其实是一个数组名<br>
 ​			B:如果一个方法有多个参数，并且有可变参数，可变参数必须在最后</p>
+<pre><code class="language-java">	实例：多个整数相加的函数
+	public static int sum(int... a) {
+		int s = 0;	
+		for(int x : a){
+			s +=x;
+		}
+		return s;
+	}
+
+	// public static int sum(int a, int b, int c, int d) {
+	// return a + b + c + d;
+	// }
+	//
+	// public static int sum(int a, int b, int c) {
+	// return a + b + c;
+	// }
+	//
+	// public static int sum(int a, int b) {
+	// return a + b;
+	// }
+</code></pre>
 <h3 id="3arrays工具类的一个方法">(3)Arrays工具类的一个方法</h3>
 <p>​	asList()把数组转成集合。<br>
 ​	注意：这个集合的长度不能改变。</p>
+<pre><code class="language-java">package Args_Study;
+
+import java.util.Arrays;
+import java.util.List;
+
+/*
+ * public static &lt;T&gt; List&lt;T&gt; asList(T... a):把数组转成集合
+ * 
+ * 注意事项：
+ * 		虽然可以把数组转成集合，但是集合的长度不能改变(不能增、删)。
+ * 		因为数组的长度不能改变
+ */
+public class ArraysDemo {
+	public static void main(String[] args) {
+		// 定义一个数组
+		// String[] strArray = { &quot;hello&quot;, &quot;world&quot;, &quot;java&quot; };
+		// List&lt;String&gt; list = Arrays.asList(strArray);
+
+		List&lt;String&gt; list = Arrays.asList(&quot;hello&quot;, &quot;world&quot;, &quot;java&quot;);
+		// UnsupportedOperationException
+		// list.add(&quot;javaee&quot;);
+		// UnsupportedOperationException
+		// list.remove(1);
+		list.set(1, &quot;javaee&quot;);
+
+		for (String s : list) {
+			System.out.println(s);
+		}
+	}
+}
+
+
+</code></pre>
 <h2 id="6练习掌握">6:练习(掌握)</h2>
 <h3 id="a集合的嵌套遍历">A:集合的嵌套遍历</h3>
+<pre><code class="language-java">package Day16_Exercise;
+
+import java.util.ArrayList;
+
+/*
+ * 集合的嵌套遍历
+ * 需求：
+ * 		我们班有学生，每一个学生是不是一个对象。所以我们可以使用一个集合表示我们班级的学生。ArrayList&lt;Student&gt;
+ * 		但是呢，我们旁边是不是还有班级，每个班级是不是也是一个ArrayList&lt;Student&gt;。
+ * 		而我现在有多个ArrayList&lt;Student&gt;。也要用集合存储，怎么办呢?
+ * 		就是这个样子的：ArrayList&lt;ArrayList&lt;Student&gt;&gt;
+ */
+public class ArrayListDemo {
+	public static void main(String[] args) {
+		// 创建大集合
+		ArrayList&lt;ArrayList&lt;Student&gt;&gt; bigArrayList = new ArrayList&lt;ArrayList&lt;Student&gt;&gt;();
+
+		// 创建第一个班级的学生集合
+		ArrayList&lt;Student&gt; firstArrayList = new ArrayList&lt;Student&gt;();
+		// 创建学生
+		Student s1 = new Student(&quot;唐僧&quot;, 30);
+		Student s2 = new Student(&quot;孙悟空&quot;, 29);
+		Student s3 = new Student(&quot;猪八戒&quot;, 28);
+		Student s4 = new Student(&quot;沙僧&quot;, 27);
+		Student s5 = new Student(&quot;白龙马&quot;, 26);
+		// 学生进班
+		firstArrayList.add(s1);
+		firstArrayList.add(s2);
+		firstArrayList.add(s3);
+		firstArrayList.add(s4);
+		firstArrayList.add(s5);
+		// 把第一个班级存储到学生系统中
+		bigArrayList.add(firstArrayList);
+
+		// 创建第二个班级的学生集合
+		ArrayList&lt;Student&gt; secondArrayList = new ArrayList&lt;Student&gt;();
+		// 创建学生
+		Student s11 = new Student(&quot;诸葛亮&quot;, 30);
+		Student s22 = new Student(&quot;司马懿&quot;, 28);
+		Student s33 = new Student(&quot;周瑜&quot;, 26);
+		// 学生进班
+		secondArrayList.add(s11);
+		secondArrayList.add(s22);
+		secondArrayList.add(s33);
+		// 把第二个班级存储到学生系统中
+		bigArrayList.add(secondArrayList);
+
+		// 创建第三个班级的学生集合
+		ArrayList&lt;Student&gt; thirdArrayList = new ArrayList&lt;Student&gt;();
+		// 创建学生
+		Student s111 = new Student(&quot;宋江&quot;, 40);
+		Student s222 = new Student(&quot;吴用&quot;, 35);
+		Student s333 = new Student(&quot;高俅&quot;, 30);
+		Student s444 = new Student(&quot;李师师&quot;, 22);
+		// 学生进班
+		thirdArrayList.add(s111);
+		thirdArrayList.add(s222);
+		thirdArrayList.add(s333);
+		thirdArrayList.add(s444);
+		// 把第三个班级存储到学生系统中
+		bigArrayList.add(thirdArrayList);
+
+		// 遍历集合
+		for (ArrayList&lt;Student&gt; array : bigArrayList) {
+			for (Student s : array) {
+				System.out.println(s.getName() + &quot;---&quot; + s.getAge());
+			}
+		}
+	}
+}
+
+</code></pre>
 <h3 id="b产生10个1-20之间的随机数要求随机数不能重复">B:产生10个1-20之间的随机数，要求随机数不能重复</h3>
+<pre><code class="language-java">package Day16_Exercise;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/*
+ * 获取10个1-20之间的随机数，要求不能重复
+ * 
+ * 用数组实现，但是数组的长度是固定的，长度不好确定。
+ * 所以我们使用集合实现。
+ * 
+ * 分析：
+ * 		A:创建产生随机数的对象
+ * 		B:创建一个存储随机数的集合。
+ * 		C:定义一个统计变量。从0开始。
+ * 		D:判断统计遍历是否小于10
+ * 			是:先产生一个随机数，判断该随机数在集合中是否存在。
+ * 					如果不存在:就添加，统计变量++。
+ * 					如果存在:就不搭理它。
+ * 			否：不搭理它
+ * 		E:遍历集合
+ */
+public class RandomDemo {
+	public static void main(String[] args) {
+		// 创建产生随机数的对象
+		Random r = new Random();
+
+		// 创建一个存储随机数的集合。
+		ArrayList&lt;Integer&gt; array = new ArrayList&lt;Integer&gt;();
+
+		// 定义一个统计变量。从0开始。
+		int count = 0;
+
+		// 判断统计遍历是否小于10
+		while (count &lt; 10) {
+			//先产生一个随机数
+			int number = r.nextInt(20) + 1;
+			
+			//判断该随机数在集合中是否存在。
+			if(!array.contains(number)){
+				//如果不存在:就添加，统计变量++。
+				array.add(number);
+				count++;
+			}
+		}
+		
+		//遍历集合
+		for(Integer i : array){
+			System.out.println(i);
+		}
+	}
+}
+
+</code></pre>
 <h3 id="c键盘录入多个数据以0结束并在控制台输出最大值">C:键盘录入多个数据，以0结束，并在控制台输出最大值</h3>
 <p>​</p>
+<pre><code class="language-java">package Day16_Exercise;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+/*
+ * 键盘录入多个数据，以0结束，要求在控制台输出这多个数据中的最大值
+ * 
+ * 分析：
+ * 		A:创建键盘录入数据对象
+ * 		B:键盘录入多个数据,我们不知道多少个，所以用集合存储
+ * 		C:以0结束,这个简单，只要键盘录入的数据是0，我就不继续录入数据了
+ * 		D:把集合转成数组
+ * 		E:对数组排序
+ * 		F:获取该数组中的最大索引的值
+ */
+
+public class ArrayListDemo2 {
+	public static void main(String[] args) {
+		// 创建键盘录入数据对象
+		Scanner sc = new Scanner(System.in);
+
+		// 键盘录入多个数据,我们不知道多少个，所以用集合存储
+		ArrayList&lt;Integer&gt; array = new ArrayList&lt;Integer&gt;();
+
+		// 以0结束,这个简单，只要键盘录入的数据是0，我就不继续录入数据了
+		while (true) {
+			System.out.println(&quot;请输入数据：&quot;);
+			int number = sc.nextInt();
+			if (number != 0) {
+				array.add(number);
+			} else {
+				break;
+			}
+		}
+
+		// 把集合转成数组
+		// public &lt;T&gt; T[] toArray(T[] a)
+		Integer[] i = new Integer[array.size()];
+		array.toArray(i);//集合转数组
+
+		// 对数组排序
+		Arrays.sort(i);  //默认从小到大排序
+		System.out.println(&quot;数组是：&quot; + arrayToString(i) + &quot;最大值是:&quot;+ i[i.length - 1]);
+	}
+
+	public static String arrayToString(Integer[] i) {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append(&quot;[&quot;);
+		for (int x = 0; x &lt; i.length; x++) {
+			if (x == i.length - 1) {
+				sb.append(i[x]);
+			} else {
+				sb.append(i[x]).append(&quot;, &quot;);
+			}
+		}
+		sb.append(&quot;]&quot;);
+
+		return sb.toString();
+	}
+}
+</code></pre>
 <h2 id="7要掌握的代码">7:要掌握的代码</h2>
 <p>​	集合存储元素，加入泛型，并可以使用增强for遍历。</p>
 
             </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://sycker7.github.io/GBXkEio9u/" class="tag">
+                    JavaSE
+                  </a>
+                
+              </div>
             
             
 
