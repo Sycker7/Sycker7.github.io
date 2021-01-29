@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>（JavaSE笔记）Set、HashSet、TreeSet、Collection总结 | Sycker&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611884394423">
+<link rel="stylesheet" href="https://sycker7.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1:登录注册案例(理解)
+2:Set集合(理解)
+(1)Set集合的特点
+​		无序,唯一
+(2)HashSet集合(掌握)
+A:底层数据结构是哈希表(是一个元素为链表的数组)
+​		  HashSet不会排序，不过存储位置是根据hashc..." />
+    <meta name="keywords" content="JavaSE" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://sycker7.github.io">
+        <img src="https://sycker7.github.io/images/avatar.png?v=1611884394423" class="site-logo">
+        <h1 class="site-title">Sycker&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            目录
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            历史
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Sycker7" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Nice to meet you.
+    </div>
+    <div class="site-footer">
+       | <a class="rss" href="https://sycker7.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">（JavaSE笔记）Set、HashSet、TreeSet、Collection总结</h2>
+            <div class="post-date">2021-01-29</div>
+            
+              <div class="feature-container" style="background-image: url('https://sycker7.github.io/post-images/lKjPH7IjE.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="1登录注册案例理解">1:登录注册案例(理解)</h2>
+<h2 id="2set集合理解">2:Set集合(理解)</h2>
+<h3 id="1set集合的特点">(1)Set集合的特点</h3>
+<p>​		无序,唯一</p>
+<h3 id="2hashset集合掌握">(2)HashSet集合(掌握)</h3>
+<h4 id="a底层数据结构是哈希表是一个元素为链表的数组">A:底层数据结构是哈希表(是一个元素为链表的数组)</h4>
+<p>​		  HashSet不会排序，不过存储位置是根据hashcode计算出来的。元素唯一。</p>
+<h4 id="b哈希表底层依赖两个方法hashcode和equals">B:哈希表底层依赖两个方法：hashCode()和equals()</h4>
+<p>​		  执行顺序：<br>
+​			首先比较哈希值是否相同<br>
+​				相同：继续执行equals()方法<br>
+​					返回true：元素重复了，不添加<br>
+​					返回false：直接把元素添加到集合<br>
+​				不同：就直接把元素添加到集合</p>
+<h4 id="c如何保证元素唯一性的呢">C:如何保证元素唯一性的呢?</h4>
+<p>​			由hashCode()和equals()保证的,add时会自动过滤掉集合中已经存在的元素</p>
+<h4 id="d开发的时候代码非常的简单自动生成即可">D:开发的时候，代码非常的简单，自动生成即可</h4>
+<p>​			在元素所属的类（Student、Dog等）中自动重写hashCode()和equals()</p>
+<p>​			注意String类已经重写这两个方法，所以可以直接使用。</p>
+<h4 id="ehashset存储字符串并遍历">E:HashSet存储字符串并遍历</h4>
+<h4 id="fhashset存储自定义对象并遍历对象的成员变量值相同即为同一个元素">F:HashSet存储自定义对象并遍历(对象的成员变量值相同即为同一个元素)</h4>
+<figure data-type="image" tabindex="1"><img src="C:%5CUsers%5C%E9%83%91%E9%B8%BF%E5%9F%BA%5CDesktop%5C%E5%88%98E%E8%80%81%E5%B8%88%5Cday17%5Cday17%5Ccode%5CHashSet%E5%AD%98%E5%82%A8%E5%85%83%E7%B4%A0%E4%BF%9D%E8%AF%81%E5%94%AF%E4%B8%80%E6%80%A7%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8F%8A%E5%9B%BE%E8%A7%A3.bmp" alt="" loading="lazy"></figure>
+<pre><code class="language-java">package HashSet_Study;
+
+import java.util.HashSet;
+
+/*
+ * 需求：存储自定义对象，并保证元素的唯一性
+ * 要求：如果两个对象的成员变量值都相同，则为同一个元素。
+ * 
+ * 目前是不符合我的要求的：因为我们知道HashSet底层依赖的是hashCode()和equals()方法。
+ * 而这两个方法我们在学生类中没有重写，所以，默认使用的是Object类。
+ * 这个时候，他们的哈希值是不会一样的，根本就不会继续判断，执行了添加操作。
+ * 因此我们要在学生类中重写hashCode()和equals()方法，大多数情况下使用自动生成
+ */
+public class HashSet_02 {
+	public static void main(String[] args) {
+		// 创建集合对象
+		HashSet&lt;Student&gt; hs = new HashSet&lt;Student&gt;();
+
+		// 创建学生对象
+		Student s1 = new Student(&quot;林青霞&quot;, 27);
+		Student s2 = new Student(&quot;柳岩&quot;, 22);
+		Student s3 = new Student(&quot;王祖贤&quot;, 30);
+		Student s4 = new Student(&quot;林青霞&quot;, 27);
+		Student s5 = new Student(&quot;林青霞&quot;, 20);
+		Student s6 = new Student(&quot;范冰冰&quot;, 22);
+
+		// 添加元素
+		hs.add(s1);
+		hs.add(s2);
+		hs.add(s3);
+		hs.add(s4);
+		hs.add(s5);
+		hs.add(s6);
+
+		// 遍历集合
+		for (Student s : hs) {
+			System.out.println(s.getName() + &quot;---&quot; + s.getAge());
+		}
+	}
+}
+
+</code></pre>
+<pre><code class="language-java">package HashSet_Study;
+
+public class Student {
+	private String name;
+	private int age;
+
+	public Student() {
+		super();
+	}
+
+	public Student(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + age;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (age != other.age)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+
+	/*
+	@Override
+	 public int hashCode() {
+	  	//return 0;
+
+	  	因为成员变量值影响了哈希值，所以我们把成员变量值相加即可
+	  	return this.name.hashCode() + this.age;
+	  	看下面
+	  	s1:name.hashCode()=40,age=30
+	  	s2:name.hashCode()=20,age=50
+	  	尽可能的区分,我们可以把它们乘以一些整数
+	 	return this.name.hashCode() + this.age * 15;
+	 }
+	 */
+
+	/* 
+	@Override
+	 public boolean equals(Object obj) {
+		 System.out.println(this + &quot;---&quot; + obj);
+		 if (this == obj) {
+		 	return true;
+		 }
+		 if (!(obj instanceof Student)) {
+			 return false;
+		 }
+		 Student s = (Student) obj;
+		 return this.name.equals(s.name) &amp;&amp; this.age == s.age;
+	 }
+	 */
+	
+
+}
+
+</code></pre>
+<h3 id="3treeset集合理解">(3)TreeSet集合（理解）</h3>
+<h4 id="a底层数据结构是红黑树是一个自平衡的二叉树">A:底层数据结构是红黑树(是一个自平衡的二叉树)</h4>
+<p>​				TreeSet集合的特点：排序和唯一</p>
+<figure data-type="image" tabindex="2"><img src="C:%5CUsers%5C%E9%83%91%E9%B8%BF%E5%9F%BA%5CDesktop%5C%E5%88%98E%E8%80%81%E5%B8%88%5Cday17%5Cday17%5Ccode%5CTreeSet%E5%AD%98%E5%82%A8%E5%85%83%E7%B4%A0%E8%87%AA%E7%84%B6%E6%8E%92%E5%BA%8F%E5%92%8C%E5%94%AF%E4%B8%80%E7%9A%84%E5%9B%BE%E8%A7%A3.bmp" alt="" loading="lazy"></figure>
+<h4 id=""></h4>
+<pre><code class="language-java">package TreeSet_Study;
+
+import java.util.TreeSet;
+
+/*
+ * TreeSet：能够对元素按照某种规则进行排序。
+ * 排序有两种方式
+ * A:自然排序
+ * B:比较器排序
+ * 
+ * TreeSet集合的特点：排序和唯一
+ * 
+ * 通过观察TreeSet的add()方法，我们知道最终要看TreeMap的put()方法。
+ */
+
+public class TreeSet_01 {
+	public static void main(String[] args) {
+		// 创建集合对象
+		// 自然顺序进行排序
+		TreeSet&lt;Integer&gt; ts = new TreeSet&lt;Integer&gt;();
+
+		// 创建元素并添加
+		// 20,18,23,22,17,24,19,18,24
+		ts.add(20);
+		ts.add(18);
+		ts.add(23);
+		ts.add(22);
+		ts.add(17);
+		ts.add(24);
+		ts.add(19);
+		ts.add(18);
+		ts.add(24);
+
+		// 遍历
+		for (Integer i : ts) {
+			System.out.println(i);
+		}
+	}
+}
+
+</code></pre>
+<h4 id="b保证元素的排序方式">B:保证元素的排序方式</h4>
+<h4 id="a自然排序元素具备比较性">a:自然排序(<mark>元素具备比较性</mark>)</h4>
+<p>​				让元素所属的类实现Comparable接口。			 （不常用，修改时麻烦）</p>
+<p>​				一般在元素所属的类（Student、Dog等）实现接口，根据要求（按年龄，按名字长度排序）重写compareTo()</p>
+<h4 id="b比较器排序集合具备比较性">b:比较器排序(<mark>集合具备比较性</mark>)</h4>
+<p>​				让集合构造方法接收Comparator的实现类对象。（常用）</p>
+<p>​				一般在创建TreeSet集合时使用匿名内部类</p>
+<h4 id="c把我们讲过的代码看一遍即可">C:把我们讲过的代码看一遍即可</h4>
+<h3 id="4案例">(4)案例：</h3>
+<h4 id="a获取无重复的随机数hashset">A:获取无重复的随机数（HashSet）</h4>
+<pre><code class="language-java">package day17_Exercise;
+
+import java.util.HashSet;
+import java.util.Random;
+
+/*
+ * 编写一个程序，获取10个1至20的随机数，要求随机数不能重复。
+ * 
+ * 分析：
+ * 		A:创建随机数对象
+ * 		B:创建一个HashSet集合
+ * 		C:判断集合的长度是不是小于10
+ * 			是：就创建一个随机数添加
+ * 			否：不搭理它
+ * 		D:遍历HashSet集合
+ */
+public class HashSetDemo {
+	public static void main(String[] args) {
+		// 创建随机数对象
+		Random r = new Random();
+
+		// 创建一个Set集合
+		HashSet&lt;Integer&gt; ts = new HashSet&lt;Integer&gt;();
+
+		// 判断集合的长度是不是小于10
+		while (ts.size() &lt; 10) {
+			int num = r.nextInt(20) + 1;
+			ts.add(num);
+		}
+
+		// 遍历Set集合
+		for (Integer i : ts) {
+			System.out.println(i);
+		}
+	}
+}
+
+
+</code></pre>
+<h4 id="-2"></h4>
+<h4 id="b键盘录入学生按照总分从高到低输出treeset-比较器排序">B:键盘录入学生按照总分从高到低输出（TreeSet 比较器排序）</h4>
+<pre><code class="language-java">package day17_Exercise;
+
+import java.util.Comparator;
+import java.util.Scanner;
+import java.util.TreeSet;
+
+/*
+ * 键盘录入5个学生信息(姓名,语文成绩,数学成绩,英语成绩),按照总分从高到低输出到控制台
+ * 
+ * 分析：
+ * 		A:定义学生类
+ * 		B:创建一个TreeSet集合
+ * 		C:总分从高到底如何实现呢?		
+ * 		D:键盘录入5个学生信息
+ * 		E:遍历TreeSet集合
+ */
+public class TreeSetDemo {
+	public static void main(String[] args) {
+		// 创建一个TreeSet集合
+		TreeSet&lt;Student&gt; ts = new TreeSet&lt;Student&gt;(new Comparator&lt;Student&gt;() {
+			@Override
+			public int compare(Student s1, Student s2) {
+				// 总分从高到低
+				int num = s2.getSum() - s1.getSum();
+				// 总分相同的不一定语文相同
+				int num2 = num == 0 ? s1.getChinese() - s2.getChinese() : num;
+				// 总分相同的不一定数序相同
+				int num3 = num2 == 0 ? s1.getMath() - s2.getMath() : num2;
+				// 总分相同的不一定英语相同
+				int num4 = num3 == 0 ? s1.getEnglish() - s2.getEnglish() : num3;
+				// 姓名还不一定相同呢
+				int num5 = num4 == 0 ? s1.getName().compareTo(s2.getName())
+						: num4;
+				return num5;
+			}
+		});
+
+		System.out.println(&quot;学生信息录入开始&quot;);
+		// 键盘录入5个学生信息
+		for (int x = 1; x &lt;= 5; x++) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println(&quot;请输入第&quot; + x + &quot;个学生的姓名:&quot;);
+			String name = sc.nextLine();
+			System.out.println(&quot;请输入第&quot; + x + &quot;个学生的语文成绩:&quot;);
+			String chineseString = sc.nextLine();
+			System.out.println(&quot;请输入第&quot; + x + &quot;个学生的数学成绩:&quot;);
+			String mathString = sc.nextLine();
+			System.out.println(&quot;请输入第&quot; + x + &quot;个学生的英语成绩:&quot;);
+			String englishString = sc.nextLine();
+
+			// 把数据封装到学生对象中
+			Student s = new Student();
+			s.setName(name);
+			s.setChinese(Integer.parseInt(chineseString));
+			s.setMath(Integer.parseInt(mathString));
+			s.setEnglish(Integer.parseInt(englishString));
+
+			// 把学生对象添加到集合
+			ts.add(s);
+		}
+		System.out.println(&quot;学生信息录入完毕&quot;);
+
+		System.out.println(&quot;学习信息从高到低排序如下：&quot;);
+		System.out.println(&quot;姓名\t语文成绩\t数学成绩\t英语成绩&quot;);
+		// 遍历集合
+		for (Student s : ts) {
+			System.out.println(s.getName() + &quot;\t&quot; + s.getChinese() + &quot;\t&quot;
+					+ s.getMath() + &quot;\t&quot; + s.getEnglish());
+		}
+	}
+}
+
+
+</code></pre>
+<h4 id="-3"></h4>
+<h4 id="c学生按照年龄从小到大输出treeset-自然排序">C:学生按照年龄从小到大输出（TreeSet 自然排序）</h4>
+<pre><code class="language-java">package TreeSet_Study;
+
+import java.util.TreeSet;
+
+/*
+ * TreeSet存储自定义对象并保证排序和唯一。
+ * 
+ * A:你没有告诉我们怎么排序
+ * 		自然排序，按照年龄从小到大排序
+ * B:元素什么情况算唯一你也没告诉我
+ * 		成员变量值都相同即为同一个元素
+ */
+public class TreeSet_02 {
+	public static void main(String[] args) {
+		// 创建集合对象
+		TreeSet&lt;Student&gt; ts = new TreeSet&lt;Student&gt;();
+
+		// 创建元素
+		Student s1 = new Student(&quot;linqingxia&quot;, 27);
+		Student s2 = new Student(&quot;zhangguorong&quot;, 29);
+		Student s3 = new Student(&quot;wanglihong&quot;, 23);
+		Student s4 = new Student(&quot;linqingxia&quot;, 27);
+		Student s5 = new Student(&quot;liushishi&quot;, 22);
+		Student s6 = new Student(&quot;wuqilong&quot;, 40);
+		Student s7 = new Student(&quot;fengqingy&quot;, 22);
+
+		// 添加元素
+		ts.add(s1);
+		ts.add(s2);
+		ts.add(s3);
+		ts.add(s4);
+		ts.add(s5);
+		ts.add(s6);
+		ts.add(s7);
+
+		// 遍历
+		for (Student s : ts) {
+			System.out.println(s.getName() + &quot;---&quot; + s.getAge());
+		}
+	}
+}
+
+</code></pre>
+<pre><code class="language-java">package TreeSet_Study;
+
+/*
+ * 如果一个类的元素要想能够进行自然排序，就必须实现自然排序接口
+ */
+public class Student implements Comparable&lt;Student&gt; {
+	private String name;
+	private int age;
+
+	public Student() {
+		super();
+	}
+
+	public Student(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	@Override
+	public int compareTo(Student s) {
+		// return 0;
+		// return 1;
+		// return -1;
+
+		// 这里返回什么，其实应该根据我的排序规则来做
+		// 按照年龄排序,主要条件
+		int num = this.age - s.age;
+		// 次要条件
+		// 年龄相同的时候，还得去看姓名是否也相同
+		// 如果年龄和姓名都相同，才是同一个元素
+		int num2 = (num == 0 ? this.name.compareTo(s.name) : num);
+		return num2;
+	}
+}
+
+</code></pre>
+<h2 id="3collection集合总结掌握">3:Collection集合总结(掌握)</h2>
+<h3 id="collection">Collection</h3>
+<h3 id="-list有序可重复">|--List	有序,可重复</h3>
+<h4 id="-arraylist">|--ArrayList</h4>
+<p>​				底层数据结构是数组，查询快，增删慢。<br>
+​				线程不安全，效率高</p>
+<h4 id="-vector">|--Vector</h4>
+<p>​				底层数据结构是数组，查询快，增删慢。<br>
+​				线程安全，效率低</p>
+<h4 id="-linkedlist">|--LinkedList</h4>
+<p>​				底层数据结构是链表，查询慢，增删快。<br>
+​				线程不安全，效率高</p>
+<h3 id="-set无序唯一">|--Set	无序,唯一</h3>
+<h4 id="-hashset">|--HashSet</h4>
+<p>​				底层数据结构是哈希表。<br>
+​				如何保证元素唯一性的呢?<br>
+​					依赖两个方法：hashCode()和equals()<br>
+​					开发中自动生成这两个方法即可</p>
+<h4 id="-linkedhashset">|--LinkedHashSet</h4>
+<p>​					底层数据结构是链表和哈希表<br>
+​					由链表保证元素有序<br>
+​					由哈希表保证元素唯一</p>
+<h4 id="-treeset">|--TreeSet</h4>
+<p>​				底层数据结构是红黑树。<br>
+​				如何保证元素排序的呢?<br>
+​					自然排序<br>
+​					比较器排序<br>
+​				如何保证元素唯一性的呢?<br>
+​					根据比较的返回值是否是0来决定<br>
+​</p>
+<h2 id="4针对collection集合我们到底使用谁呢掌握">4:针对Collection集合我们到底使用谁呢?(掌握)</h2>
+<p>4:针对Collection集合我们到底使用谁呢?(掌握)</p>
+<h4 id="元素唯一吗">元素唯一吗?</h4>
+<p>​	<mark>是：Set</mark></p>
+<h4 id="排序吗">排序吗?</h4>
+<p>​		是：TreeSet<br>
+​		否：HashSet<br>
+​		如果你知道是Set，但是不知道是哪个Set，就用HashSet。</p>
+<p>​</p>
+<p>​	<mark>否：List</mark></p>
+<h4 id="要安全吗">要安全吗?</h4>
+<p>​		是：Vector<br>
+​		否：ArrayList或者LinkedList</p>
+<h4 id="查询多吗">查询多吗？</h4>
+<p>​		查询多：ArrayList<br>
+​		增删多：LinkedList</p>
+<p>如果你知道是List，但是不知道是哪个List，就用ArrayList。</p>
+<p>如果你知道是Collection集合，但是不知道使用谁，就用ArrayList。</p>
+<p>如果你知道用集合，就用ArrayList。</p>
+<h2 id="5在集合中常见的数据结构掌握">5:在集合中常见的数据结构(掌握)</h2>
+<p>​	ArrayXxx:底层数据结构是数组，查询快，增删慢<br>
+​	LinkedXxx:底层数据结构是链表，查询慢，增删快<br>
+​	HashXxx:底层数据结构是哈希表。依赖两个方法：hashCode()和equals()<br>
+​	TreeXxx:底层数据结构是二叉树。两种方式排序：自然排序和比较器排序<br>
+​</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://sycker7.github.io/GBXkEio9u/" class="tag">
+                    JavaSE
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://sycker7.github.io/MPbxxgJCK/">
+                  <h3 class="post-title">
+                    （JavaSE笔记）List的子类、泛型、增强for循环、静态导入、可变参数
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
