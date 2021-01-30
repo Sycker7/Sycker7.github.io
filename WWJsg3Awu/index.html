@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1612000070747">
+<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1612005038651">
 <link rel="stylesheet" href="https://sycker7.github.io/styles/main.css">
 
 
@@ -18,11 +18,15 @@
 
 
 
-    <meta name="description" content="
-
-
-
-..." />
+    <meta name="description" content="1:集合
+Collection(单列集合)
+List(有序,可重复)
+ArrayList⭐
+​					底层数据结构是数组,查询快,增删慢
+​					线程不安全,效率高
+Vector
+​					底层数据结构是数组,查询快,增删慢
+​		..." />
     <meta name="keywords" content="JavaSE" />
   </head>
   <body>
@@ -32,7 +36,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sycker7.github.io">
-        <img src="https://sycker7.github.io/images/avatar.png?v=1612000070747" class="site-logo">
+        <img src="https://sycker7.github.io/images/avatar.png?v=1612005038651" class="site-logo">
         <h1 class="site-title">Sycker&#39;s blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -99,10 +103,140 @@
               </div>
             
             <div class="post-content" v-pre>
-              <p><img src="https://sycker7.github.io/post-images/1612000052819.bmp" alt="" loading="lazy"><br>
-<img src="https://sycker7.github.io/post-images/1612000057266.bmp" alt="" loading="lazy"><br>
-<img src="https://sycker7.github.io/post-images/1612000063806.bmp" alt="" loading="lazy"><br>
-<img src="https://sycker7.github.io/post-images/1612000068903.bmp" alt="" loading="lazy"></p>
+              <h1 id="1集合">1:集合</h1>
+<h2 id="collection单列集合">Collection(单列集合)</h2>
+<h3 id="list有序可重复">List(有序,可重复)</h3>
+<h4 id="arraylist">ArrayList⭐</h4>
+<p>​					底层数据结构是数组,查询快,增删慢<br>
+​					线程不安全,效率高</p>
+<h4 id="vector">Vector</h4>
+<p>​					底层数据结构是数组,查询快,增删慢<br>
+​					线程安全,效率低</p>
+<h4 id="linkedlist">LinkedList</h4>
+<p>​					底层数据结构是链表,查询慢,增删快<br>
+​					线程不安全,效率高</p>
+<h3 id="set无序唯一">Set(无序,唯一)</h3>
+<h4 id="hashset">HashSet</h4>
+<p>​					底层数据结构是哈希表。<br>
+​					哈希表依赖两个方法：hashCode()和equals()<br>
+​					执行顺序：<br>
+​						首先判断hashCode()值是否相同<br>
+​							是：继续执行equals(),看其返回值<br>
+​								是true:说明元素重复，不添加<br>
+​								是false:就直接添加到集合<br>
+​							否：就直接添加到集合<br>
+​					最终：<br>
+​						自动生成hashCode()和equals()即可</p>
+<h4 id="linkedhashset">LinkedHashSet</h4>
+<p>​					底层数据结构由链表和哈希表组成。<br>
+​					由链表保证元素有序。<br>
+​					由哈希表保证元素唯一。</p>
+<h4 id="treeset">TreeSet</h4>
+<p>​					底层数据结构是红黑树。(是一种自平衡的二叉树)<br>
+​					如何保证元素唯一性呢?<br>
+​					根据比较的返回值是否是0来决定<br>
+​					如何保证元素的排序呢?<br>
+​						两种方式<br>
+​							自然排序(元素具备比较性)<br>
+​								让元素所属的类实现Comparable接口<br>
+​							比较器排序(集合具备比较性)<br>
+​								让集合接收一个Comparator的实现类对象</p>
+<h2 id="map双列集合">Map(双列集合)</h2>
+<p>​		A:Map集合的数据结构仅仅针对键有效，与值无关。<br>
+​		B:存储的是键值对形式的元素，键唯一，值可重复。</p>
+<h3 id="hashmap">HashMap⭐</h3>
+<p>​					底层数据结构是哈希表。线程不安全，效率高<br>
+​					哈希表依赖两个方法：hashCode()和equals()<br>
+​						执行顺序：<br>
+​									首先判断hashCode()值是否相同<br>
+​									是：继续执行equals(),看其返回值<br>
+​											是true:说明元素重复，不添加<br>
+​											是false:就直接添加到集合<br>
+​									否：就直接添加到集合<br>
+​						最终：<br>
+​									自动生成hashCode()和equals()即可</p>
+<h3 id="linkedhashmap">LinkedHashMap</h3>
+<p>​			底层数据结构由链表和哈希表组成。<br>
+​			由链表保证元素有序。<br>
+​			由哈希表保证元素唯一。</p>
+<h3 id="hashtable">Hashtable</h3>
+<p>​					底层数据结构是哈希表。线程安全，效率低</p>
+<p>​					哈希表依赖两个方法：hashCode()和equals()</p>
+<p>​					执行顺序：<br>
+​						首先判断hashCode()值是否相同<br>
+​							是：继续执行equals(),看其返回值<br>
+​								是true:说明元素重复，不添加<br>
+​								是false:就直接添加到集合<br>
+​							否：就直接添加到集合<br>
+​						最终：<br>
+​								自动生成hashCode()和equals()即可</p>
+<h3 id="treemap">TreeMap</h3>
+<p>​			底层数据结构是红黑树。(是一种自平衡的二叉树)<br>
+​				如何保证元素唯一性呢?<br>
+​					根据比较的返回值是否是0来决定<br>
+​				如何保证元素的排序呢?<br>
+​					两种方式</p>
+<p>​						自然排序(元素具备比较性)</p>
+<p>​							让元素所属的类实现Comparable接口</p>
+<p>​						比较器排序(集合具备比较性)</p>
+<p>​							让集合接收一个Comparator的实现类对象</p>
+<h1 id="2到底使用那种集合">2:到底使用那种集合</h1>
+<p>看需求。</p>
+<p>是否是键值对象形式:<br>
+是：Map<br>
+键是否需要排序:<br>
+是：TreeMap<br>
+否：HashMap<br>
+不知道，就使用HashMap。<br>
+否：Collection<br>
+元素是否唯一:<br>
+是：Set<br>
+元素是否需要排序:<br>
+是：TreeSet<br>
+否：HashSet<br>
+不知道，就使用HashSet</p>
+<p>​							否：List<br>
+​								要安全吗:<br>
+​									是：Vector(其实我们也不用它,后面我们讲解了多线程以后，我在给你回顾用谁)<br>
+​									否：ArrayList或者LinkedList<br>
+​													增删多：LinkedList<br>
+​													查询多：ArrayList<br>
+​									不知道，就使用ArrayList</p>
+<p>​			  不知道，就使用ArrayList</p>
+<h1 id="3集合的常见方法及遍历方式">3:集合的常见方法及遍历方式</h1>
+<h2 id="collection">Collection:</h2>
+<p>​				add()<br>
+​				remove()<br>
+​				contains()<br>
+​				iterator()<br>
+​				size()<br>
+​				遍历：<br>
+​								增强for<br>
+​								迭代器</p>
+<h3 id="-list">|--List</h3>
+<p>​				get()	<br>
+​				遍历：<br>
+​								普通for</p>
+<h3 id="-set">|--Set</h3>
+<h2 id="map">Map:</h2>
+<p>​				put()<br>
+​				remove()<br>
+​				containskey(),containsValue()<br>
+​				keySet()<br>
+​				get()<br>
+​				value()<br>
+​				entrySet()<br>
+​				size()</p>
+<p>​				遍历：<br>
+​								根据键找值<br>
+​								根据键值对对象分别找键和值</p>
+<p>作业：<br>
+我讲解过的任意一个集合，我要求你存储什么，你就能够存储什么。<br>
+并且，还要能够遍历出来。</p>
+<h1 id="4arraylistlinkedlisthashsethashmap掌握">4:ArrayList,LinkedList,HashSet,HashMap(掌握)</h1>
+<p>​	存储字符串和自定义对象数据并遍历<br>
+​</p>
+<h1 id="5集合的嵌套遍历理解">5:集合的嵌套遍历(理解)</h1>
 
             </div>
             
