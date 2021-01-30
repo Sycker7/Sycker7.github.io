@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611991999056">
+<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611992569914">
 <link rel="stylesheet" href="https://sycker7.github.io/styles/main.css">
 
 
@@ -34,7 +34,7 @@ A:底层数据结构是哈希表(是一个元素为链表的数组)
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sycker7.github.io">
-        <img src="https://sycker7.github.io/images/avatar.png?v=1611991999056" class="site-logo">
+        <img src="https://sycker7.github.io/images/avatar.png?v=1611992569914" class="site-logo">
         <h1 class="site-title">Sycker&#39;s blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -101,27 +101,27 @@ A:底层数据结构是哈希表(是一个元素为链表的数组)
               </div>
             
             <div class="post-content" v-pre>
-              <h2 id="1登录注册案例理解">1:登录注册案例(理解)</h2>
-<h2 id="2set集合理解">2:Set集合(理解)</h2>
-<h3 id="1set集合的特点">(1)Set集合的特点</h3>
+              <h1 id="1登录注册案例理解">1:登录注册案例(理解)</h1>
+<h1 id="2set集合理解">2:Set集合(理解)</h1>
+<h2 id="1set集合的特点">(1)Set集合的特点</h2>
 <p>​		无序,唯一</p>
-<h3 id="2hashset集合掌握">(2)HashSet集合(掌握)</h3>
-<h4 id="a底层数据结构是哈希表是一个元素为链表的数组">A:底层数据结构是哈希表(是一个元素为链表的数组)</h4>
+<h2 id="2hashset集合掌握">(2)HashSet集合(掌握)</h2>
+<h3 id="a底层数据结构是哈希表是一个元素为链表的数组">A:底层数据结构是哈希表(是一个元素为链表的数组)</h3>
 <p>​		  HashSet不会排序，不过存储位置是根据hashcode计算出来的。元素唯一。</p>
-<h4 id="b哈希表底层依赖两个方法hashcode和equals">B:哈希表底层依赖两个方法：hashCode()和equals()</h4>
+<h3 id="b哈希表底层依赖两个方法hashcode和equals">B:哈希表底层依赖两个方法：hashCode()和equals()</h3>
 <p>​		  执行顺序：<br>
 ​			首先比较哈希值是否相同<br>
 ​				相同：继续执行equals()方法<br>
 ​					返回true：元素重复了，不添加<br>
 ​					返回false：直接把元素添加到集合<br>
 ​				不同：就直接把元素添加到集合</p>
-<h4 id="c如何保证元素唯一性的呢">C:如何保证元素唯一性的呢?</h4>
+<h3 id="c如何保证元素唯一性的呢">C:如何保证元素唯一性的呢?</h3>
 <p>​			由hashCode()和equals()保证的,add时会自动过滤掉集合中已经存在的元素</p>
-<h4 id="d开发的时候代码非常的简单自动生成即可">D:开发的时候，代码非常的简单，自动生成即可</h4>
+<h3 id="d开发的时候代码非常的简单自动生成即可">D:开发的时候，代码非常的简单，自动生成即可</h3>
 <p>​			在元素所属的类（Student、Dog等）中自动重写hashCode()和equals()</p>
 <p>​			注意String类已经重写这两个方法，所以可以直接使用。</p>
-<h4 id="ehashset存储字符串并遍历">E:HashSet存储字符串并遍历</h4>
-<h4 id="fhashset存储自定义对象并遍历对象的成员变量值相同即为同一个元素">F:HashSet存储自定义对象并遍历(对象的成员变量值相同即为同一个元素)</h4>
+<h3 id="ehashset存储字符串并遍历">E:HashSet存储字符串并遍历</h3>
+<h3 id="fhashset存储自定义对象并遍历对象的成员变量值相同即为同一个元素">F:HashSet存储自定义对象并遍历(对象的成员变量值相同即为同一个元素)</h3>
 <figure data-type="image" tabindex="1"><img src="C:%5CUsers%5C%E9%83%91%E9%B8%BF%E5%9F%BA%5CDesktop%5C%E5%88%98E%E8%80%81%E5%B8%88%5Cday17%5Cday17%5Ccode%5CHashSet%E5%AD%98%E5%82%A8%E5%85%83%E7%B4%A0%E4%BF%9D%E8%AF%81%E5%94%AF%E4%B8%80%E6%80%A7%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8F%8A%E5%9B%BE%E8%A7%A3.bmp" alt="" loading="lazy"></figure>
 <pre><code class="language-java">package HashSet_Study;
 
@@ -260,8 +260,8 @@ public class Student {
 }
 
 </code></pre>
-<h3 id="3treeset集合理解">(3)TreeSet集合（理解）</h3>
-<h4 id="a底层数据结构是红黑树是一个自平衡的二叉树">A:底层数据结构是红黑树(是一个自平衡的二叉树)</h4>
+<h2 id="3treeset集合理解">(3)TreeSet集合（理解）</h2>
+<h3 id="a底层数据结构是红黑树是一个自平衡的二叉树">A:底层数据结构是红黑树(是一个自平衡的二叉树)</h3>
 <p>​				TreeSet集合的特点：排序和唯一</p>
 <figure data-type="image" tabindex="2"><img src="C:%5CUsers%5C%E9%83%91%E9%B8%BF%E5%9F%BA%5CDesktop%5C%E5%88%98E%E8%80%81%E5%B8%88%5Cday17%5Cday17%5Ccode%5CTreeSet%E5%AD%98%E5%82%A8%E5%85%83%E7%B4%A0%E8%87%AA%E7%84%B6%E6%8E%92%E5%BA%8F%E5%92%8C%E5%94%AF%E4%B8%80%E7%9A%84%E5%9B%BE%E8%A7%A3.bmp" alt="" loading="lazy"></figure>
 <h4 id=""></h4>
@@ -306,7 +306,7 @@ public class TreeSet_01 {
 }
 
 </code></pre>
-<h4 id="b保证元素的排序方式">B:保证元素的排序方式</h4>
+<h3 id="b保证元素的排序方式">B:保证元素的排序方式</h3>
 <h4 id="a自然排序元素具备比较性">a:自然排序(<mark>元素具备比较性</mark>)</h4>
 <p>​				让元素所属的类实现Comparable接口。			 （不常用，修改时麻烦）</p>
 <p>​				一般在元素所属的类（Student、Dog等）实现接口，根据要求（按年龄，按名字长度排序）重写compareTo()</p>
@@ -314,8 +314,8 @@ public class TreeSet_01 {
 <p>​				让集合构造方法接收Comparator的实现类对象。（常用）</p>
 <p>​				一般在创建TreeSet集合时使用匿名内部类</p>
 <h4 id="c把我们讲过的代码看一遍即可">C:把我们讲过的代码看一遍即可</h4>
-<h3 id="4案例">(4)案例：</h3>
-<h4 id="a获取无重复的随机数hashset">A:获取无重复的随机数（HashSet）</h4>
+<h2 id="4案例">(4)案例：</h2>
+<h3 id="a获取无重复的随机数hashset">A:获取无重复的随机数（HashSet）</h3>
 <pre><code class="language-java">package day17_Exercise;
 
 import java.util.HashSet;
@@ -356,7 +356,7 @@ public class HashSetDemo {
 
 </code></pre>
 <h4 id="-2"></h4>
-<h4 id="b键盘录入学生按照总分从高到低输出treeset-比较器排序">B:键盘录入学生按照总分从高到低输出（TreeSet 比较器排序）</h4>
+<h3 id="b键盘录入学生按照总分从高到低输出treeset-比较器排序">B:键盘录入学生按照总分从高到低输出（TreeSet 比较器排序）</h3>
 <pre><code class="language-java">package day17_Exercise;
 
 import java.util.Comparator;
@@ -432,7 +432,7 @@ public class TreeSetDemo {
 
 </code></pre>
 <h4 id="-3"></h4>
-<h4 id="c学生按照年龄从小到大输出treeset-自然排序">C:学生按照年龄从小到大输出（TreeSet 自然排序）</h4>
+<h3 id="c学生按照年龄从小到大输出treeset-自然排序">C:学生按照年龄从小到大输出（TreeSet 自然排序）</h3>
 <pre><code class="language-java">package TreeSet_Study;
 
 import java.util.TreeSet;
@@ -529,8 +529,8 @@ public class Student implements Comparable&lt;Student&gt; {
 }
 
 </code></pre>
-<h2 id="3collection集合总结掌握">3:Collection集合总结(掌握)</h2>
-<h3 id="collection">Collection</h3>
+<h1 id="3collection集合总结掌握">3:Collection集合总结(掌握)</h1>
+<h2 id="collection">Collection</h2>
 <h3 id="-list有序可重复">|--List	有序,可重复</h3>
 <h4 id="-arraylist">|--ArrayList</h4>
 <p>​				底层数据结构是数组，查询快，增删慢。<br>
@@ -559,26 +559,24 @@ public class Student implements Comparable&lt;Student&gt; {
 ​				如何保证元素唯一性的呢?<br>
 ​					根据比较的返回值是否是0来决定<br>
 ​</p>
-<h2 id="4针对collection集合我们到底使用谁呢掌握">4:针对Collection集合我们到底使用谁呢?(掌握)</h2>
-<p>4:针对Collection集合我们到底使用谁呢?(掌握)</p>
-<h4 id="元素唯一吗">元素唯一吗?</h4>
+<h1 id="4针对collection集合我们到底使用谁呢掌握">4:针对Collection集合我们到底使用谁呢?(掌握)</h1>
+<h2 id="元素唯一吗">元素唯一吗?</h2>
 <p>​	<mark>是：Set</mark></p>
-<h4 id="排序吗">排序吗?</h4>
+<h2 id="排序吗">排序吗?</h2>
 <p>​		是：TreeSet<br>
 ​		否：HashSet<br>
 ​		如果你知道是Set，但是不知道是哪个Set，就用HashSet。</p>
 <p>​</p>
 <p>​	<mark>否：List</mark></p>
-<h4 id="要安全吗">要安全吗?</h4>
+<h2 id="要安全吗">要安全吗?</h2>
 <p>​		是：Vector<br>
 ​		否：ArrayList或者LinkedList</p>
-<h4 id="查询多吗">查询多吗？</h4>
+<h2 id="查询多吗">查询多吗？</h2>
 <p>​		查询多：ArrayList<br>
 ​		增删多：LinkedList</p>
 <p>如果你知道是List，但是不知道是哪个List，就用ArrayList。</p>
-<p>如果你知道是Collection集合，但是不知道使用谁，就用ArrayList。</p>
-<p>如果你知道用集合，就用ArrayList。</p>
-<h2 id="5在集合中常见的数据结构掌握">5:在集合中常见的数据结构(掌握)</h2>
+<p>如果你知道用Collection集合，但是不知道使用谁，就用ArrayList。</p>
+<h1 id="5在集合中常见的数据结构掌握">5:在集合中常见的数据结构(掌握)</h1>
 <p>​	ArrayXxx:底层数据结构是数组，查询快，增删慢<br>
 ​	LinkedXxx:底层数据结构是链表，查询慢，增删快<br>
 ​	HashXxx:底层数据结构是哈希表。依赖两个方法：hashCode()和equals()<br>
