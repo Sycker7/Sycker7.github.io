@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611991438537">
+<link rel="shortcut icon" href="https://sycker7.github.io/favicon.ico?v=1611991999056">
 <link rel="stylesheet" href="https://sycker7.github.io/styles/main.css">
 
 
@@ -32,7 +32,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://sycker7.github.io">
-        <img src="https://sycker7.github.io/images/avatar.png?v=1611991438537" class="site-logo">
+        <img src="https://sycker7.github.io/images/avatar.png?v=1611991999056" class="site-logo">
         <h1 class="site-title">Sycker&#39;s blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -99,41 +99,41 @@
               </div>
             
             <div class="post-content" v-pre>
-              <h2 id="1map掌握">1:Map(掌握)</h2>
-<h3 id="1将键映射到值的对象-一个映射不能包含重复的键每个键最多只能映射到一个值">(1)将键映射到值的对象。一个映射不能包含重复的键，每个键最多只能映射到一个值。</h3>
-<h3 id="2map和collection的区别">(2)Map和Collection的区别?</h3>
+              <h1 id="1map掌握">1:Map(掌握)</h1>
+<h2 id="1将键映射到值的对象-一个映射不能包含重复的键每个键最多只能映射到一个值">(1)将键映射到值的对象。一个映射不能包含重复的键，每个键最多只能映射到一个值。</h2>
+<h2 id="2map和collection的区别">(2)Map和Collection的区别?</h2>
 <p>​		A:Map 存储的是键值对形式的元素，键唯一，值可以重复。夫妻对<br>
 ​		B:Collection 存储的是单独出现的元素，子接口Set元素唯一，子接口List元素可重复。光棍</p>
-<h3 id="3map接口功能概述">(3)Map接口功能概述</h3>
-<h4 id="a添加功能">A:添加功能</h4>
+<h2 id="3map接口功能概述">(3)Map接口功能概述</h2>
+<h3 id="a添加功能">A:添加功能</h3>
 <p>​							 V put(K key,V value):添加元素。<br>
 如果键是第一次存储，就直接存储元素，返回null<br>
 ​							 如果键不是第一次存在，就用值把以前的值替换掉，返回以前的值</p>
-<h4 id="b删除功能">B:删除功能</h4>
+<h3 id="b删除功能">B:删除功能</h3>
 <p>​							 void clear():移除所有的键值对元素<br>
 ​							 V remove(Object key)：根据键删除键值对元素，并把值返回</p>
-<h4 id="c判断功能">C:判断功能</h4>
+<h3 id="c判断功能">C:判断功能</h3>
 <p>​							boolean containsKey(Object key)：判断集合是否包含指定的键<br>
 ​							boolean containsValue(Object value):判断集合是否包含指定的值<br>
 ​							boolean isEmpty()：判断集合是否为空</p>
-<h4 id="d获取功能">D:获取功能</h4>
+<h3 id="d获取功能">D:获取功能</h3>
 <p>​							Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet():返回的是键值对对象的集合<br>
 ​							V get(Object key):根据键获取值<br>
 ​							Set<K> keySet():获取集合中所有键的集合<br>
 ​							Collection<V> values():获取集合中所有值的集合</p>
-<h4 id="e长度功能">E:长度功能</h4>
+<h3 id="e长度功能">E:长度功能</h3>
 <p>​							int size()：返回集合中的键值对的对数</p>
-<h3 id="4map集合的遍历">(4)Map集合的遍历</h3>
-<h4 id="a键找值">A:键找值</h4>
+<h2 id="4map集合的遍历">(4)Map集合的遍历</h2>
+<h3 id="a键找值">A:键找值</h3>
 <p>​				a:获取所有键的集合<br>
 ​				b:遍历键的集合,得到每一个键<br>
 ​				c:根据键到集合中去找值</p>
-<h4 id="b键值对对象找键和值">B:键值对对象找键和值</h4>
+<h3 id="b键值对对象找键和值">B:键值对对象找键和值</h3>
 <p>​				a:获取所有的键值对对象的集合<br>
 ​				b:遍历键值对对象的集合，获取每一个键值对对象<br>
 ​				c:根据键值对对象去获取键和值<br>
 ​</p>
-<h4 id="代码体现">代码体现：</h4>
+<h3 id="代码体现">代码体现：</h3>
 <pre><code class="language-java">Map&lt;String,String&gt; hm = new HashMap&lt;String,String&gt;();
 
 	hm.put(&quot;it002&quot;,&quot;hello&quot;);
@@ -155,8 +155,8 @@
 		System.out.println(key+&quot;---&quot;+value);
 	}
 </code></pre>
-<h3 id="5hashmap集合的练习">(5)HashMap集合的练习</h3>
-<h5 id="ahashmapstringstring">A:HashMap&lt;String,String&gt;</h5>
+<h2 id="5hashmap集合的练习">(5)HashMap集合的练习</h2>
+<h3 id="ahashmapstringstring">A:HashMap&lt;String,String&gt;</h3>
 <pre><code class="language-java">package HashMap_Study;
 
 import java.util.HashMap;
@@ -191,7 +191,7 @@ public class HashMapDemo {
 	}
 }
 </code></pre>
-<h5 id="bhashmapintegerstring">B:HashMap&lt;Integer,String&gt;</h5>
+<h3 id="bhashmapintegerstring">B:HashMap&lt;Integer,String&gt;</h3>
 <pre><code class="language-java">package HashMap_Study;
 
 import java.util.HashMap;
@@ -221,7 +221,7 @@ public class HashMapDemo2 {
 	}
 }
 </code></pre>
-<h5 id="chashmapstringstudent">C:HashMap&lt;String,Student&gt;</h5>
+<h3 id="chashmapstringstudent">C:HashMap&lt;String,Student&gt;</h3>
 <pre><code class="language-java">package HashMap_Study;
 
 import java.util.HashMap;
@@ -258,7 +258,7 @@ public class HashMapDemo3 {
 	}
 }
 </code></pre>
-<h5 id="dhashmapstudentstring">D:HashMap&lt;Student,String&gt;</h5>
+<h3 id="dhashmapstudentstring">D:HashMap&lt;Student,String&gt;</h3>
 <pre><code class="language-java">package HashMap_Study;
 
 import java.util.HashMap;
@@ -362,8 +362,8 @@ public class Student {
 }
 
 </code></pre>
-<h3 id="6treemap集合的练习">(6)TreeMap集合的练习</h3>
-<h5 id="atreemapstringstring">A:TreeMap&lt;String,String&gt;</h5>
+<h2 id="6treemap集合的练习">(6)TreeMap集合的练习</h2>
+<h3 id="atreemapstringstring">A:TreeMap&lt;String,String&gt;</h3>
 <pre><code class="language-java">package TreeMap_Study;
 
 import java.util.Set;
@@ -386,7 +386,7 @@ public class TreeMapDemo {
 }
 
 </code></pre>
-<h5 id="btreemapstudentstring">B:TreeMap&lt;Student,String&gt;</h5>
+<h3 id="btreemapstudentstring">B:TreeMap&lt;Student,String&gt;</h3>
 <pre><code class="language-java">package TreeMap_Study;
 
 import java.util.Comparator;
@@ -423,8 +423,8 @@ public class TreeMapDemo2 {
 }
 
 </code></pre>
-<h3 id="7案例">(7)案例</h3>
-<h5 id="a统计一个字符串中每个字符出现的次数">A:统计一个字符串中每个字符出现的次数</h5>
+<h2 id="7案例">(7)案例</h2>
+<h3 id="a统计一个字符串中每个字符出现的次数">A:统计一个字符串中每个字符出现的次数</h3>
 <figure data-type="image" tabindex="1"><img src="D:%5CMyblog%5C%E7%AC%94%E8%AE%B0%5C%E5%9B%BE%E7%89%87%5C%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%AF%8F%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0%E6%A1%88%E4%BE%8B%E5%9B%BE%E8%A7%A3.bmp" alt="" loading="lazy"></figure>
 <pre><code class="language-java">package day18_Exercise;
 
@@ -498,8 +498,8 @@ public class TreeMapDemo3 {
 }
 
 </code></pre>
-<h5 id="b集合的嵌套遍历">B:集合的嵌套遍历</h5>
-<h6 id="ahashmap嵌套hashmap">a:HashMap嵌套HashMap</h6>
+<h3 id="b集合的嵌套遍历">B:集合的嵌套遍历</h3>
+<h4 id="ahashmap嵌套hashmap">a:HashMap嵌套HashMap</h4>
 <pre><code class="language-java">package day18_Exercise;
 
 import java.util.HashMap;
@@ -555,7 +555,7 @@ public class HashMapDemo2 {
 
 </code></pre>
 <h6 id=""></h6>
-<h6 id="bhashmap嵌套arraylist">b:HashMap嵌套ArrayList</h6>
+<h4 id="bhashmap嵌套arraylist">b:HashMap嵌套ArrayList</h4>
 <pre><code class="language-java">package day18_Exercise;
 
 import java.util.ArrayList;
@@ -614,7 +614,7 @@ public class HashMapIncludeArrayListDemo {
 }
 
 </code></pre>
-<h6 id="carraylist嵌套hashmap">c:ArrayList嵌套HashMap</h6>
+<h4 id="carraylist嵌套hashmap">c:ArrayList嵌套HashMap</h4>
 <pre><code class="language-java">package day18_Exercise;
 
 import java.util.ArrayList;
@@ -676,7 +676,7 @@ public class ArrayListIncludeHashMapDemo {
 
 </code></pre>
 <p>​</p>
-<h6 id="d多层嵌套">d:多层嵌套</h6>
+<h4 id="d多层嵌套">d:多层嵌套</h4>
 <pre><code class="language-java">package day18_Exercise;
 
 import java.util.ArrayList;
@@ -763,19 +763,19 @@ public class HashMapDemo {
 
 
 </code></pre>
-<h2 id="2collections理解">2:Collections(理解)</h2>
-<h3 id="1是针对集合进行操作的工具类">(1)是针对集合进行操作的工具类</h3>
-<h3 id="2面试题collection和collections的区别">(2)面试题：Collection和Collections的区别</h3>
+<h1 id="2collections理解">2:Collections(理解)</h1>
+<h2 id="1是针对集合进行操作的工具类">(1)是针对集合进行操作的工具类</h2>
+<h2 id="2面试题collection和collections的区别">(2)面试题：Collection和Collections的区别</h2>
 <p>​		A:Collection 是单列集合的顶层接口，有两个子接口List和Set<br>
 ​		B:Collections 是针对集合进行操作的工具类，可以对集合进行排序和查找等</p>
-<h3 id="3常见的几个小方法">(3)常见的几个小方法：</h3>
+<h2 id="3常见的几个小方法">(3)常见的几个小方法：</h2>
 <p>​		A:public static <T> void sort(List<T> list)：排序 默认情况下是自然顺序。<br>
 ​		B:public static <T> int binarySearch(List&lt;?&gt; list,T key)：二分查找<br>
 ​		C:public static <T> T max(Collection&lt;?&gt; coll)：最大值<br>
 ​		D:public static void reverse(List&lt;?&gt; list)：反转<br>
 ​		E:public static void shuffle(List&lt;?&gt; list)：随机置换</p>
-<h3 id="4案例">(4)案例</h3>
-<h5 id="aarraylist集合存储自定义对象的排序">A:ArrayList集合存储自定义对象的排序</h5>
+<h2 id="4案例">(4)案例</h2>
+<h3 id="aarraylist集合存储自定义对象的排序">A:ArrayList集合存储自定义对象的排序</h3>
 <pre><code class="language-java">package Collections_Study;
 
 import java.util.ArrayList;
@@ -828,7 +828,7 @@ public class Collections_02 {
 }
 
 </code></pre>
-<h5 id="b模拟斗地主洗牌和发牌">B:模拟斗地主洗牌和发牌</h5>
+<h3 id="b模拟斗地主洗牌和发牌">B:模拟斗地主洗牌和发牌</h3>
 <pre><code class="language-java">package PokerGame;
 
 import java.util.ArrayList;
@@ -909,7 +909,7 @@ public class PokerDemo {
 }
 </code></pre>
 <p>​</p>
-<h5 id="c模拟斗地主洗牌和发牌并对牌进行排序">C:模拟斗地主洗牌和发牌并对牌进行排序</h5>
+<h3 id="c模拟斗地主洗牌和发牌并对牌进行排序">C:模拟斗地主洗牌和发牌并对牌进行排序</h3>
 <figure data-type="image" tabindex="2"><img src="D:%5CMyblog%5C%E7%AC%94%E8%AE%B0%5C%E5%9B%BE%E7%89%87%5C%E6%A8%A1%E6%8B%9F%E6%96%97%E5%9C%B0%E4%B8%BB%E6%B4%97%E7%89%8C%E5%92%8C%E5%8F%91%E7%89%8C%E5%B9%B6%E5%AF%B9%E7%89%8C%E8%BF%9B%E8%A1%8C%E6%8E%92%E5%BA%8F%E7%9A%84%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3.bmp" alt="" loading="lazy"></figure>
 <pre><code class="language-java">package PokerGame;
 
